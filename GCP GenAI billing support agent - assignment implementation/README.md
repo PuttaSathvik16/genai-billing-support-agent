@@ -1,4 +1,4 @@
-# GenAI-Powered Billing Support Agent — GCP Reference Implementation
+# GenAI-Powered Billing Support Agent - GCP Reference Implementation
 
 A GenAI-powered virtual agent for telecom billing inquiries, built on Google Cloud:
 Dialogflow CX (Conversational Agents), Vertex AI (Gemini), Cloud Functions, Pub/Sub,
