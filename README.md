@@ -61,7 +61,7 @@ built and partially tested in a GCP free-tier sandbox project.
 
    ---
 
-## Task 1 — Dialogflow CX: Intent & Flow
+## Task 1 - Dialogflow CX: Intent & Flow
 
 **Intent: `billing.inquiry.high_bill`** — training phrases
 
@@ -89,7 +89,7 @@ The route calls a webhook fulfillment tag (`high_bill_explanation`) that is serv
 
 ---
 
-## Task 2 — Vertex AI: Generative Billing Response
+## Task 2 - Vertex AI: Generative Billing Response
 
 Fulfillment function (pseudo-code). It calls Vertex AI's Gemini model with a grounded prompt built from the customer's actual `billing_data`, so the model explains rather than invents numbers:
 
@@ -113,7 +113,7 @@ return response.text
 
 ---
 
-## Task 3 — Conversation Profile: Promise Extraction
+## Task 3 - Conversation Profile: Promise Extraction
 
 **Extraction prompt**
 
@@ -141,7 +141,7 @@ Agent: I'll credit you $42, it'll post in 3 to 5 business days.
 
 ---
 
-## Task 4 — Post-Conversation Email Notification
+## Task 4 - Post-Conversation Email Notification
 
 A Cloud Function is triggered by a Pub/Sub message published when Dialogflow CX (or the CCAI Insights pipeline) marks the conversation as ended. It composes the call summary and extracted promises, then sends the notification through SendGrid.
 
@@ -161,7 +161,7 @@ GCP services: Pub/Sub (conversation-ended event) triggers Cloud Functions; SendG
 
 ---
 
-## Task 5 — Conversation Insights: Analytics
+## Task 5 - Conversation Insights: Analytics
 
 Conversation data is stored in BigQuery (table: `billing_conversations`).
 
@@ -182,7 +182,7 @@ Business value: flags whether agents are promising more than the org can fulfill
 
 ---
 
-## Task 6 — Monitoring & Observability
+## Task 6 - Monitoring & Observability
 
 **GenAI behavior**
 - Cloud Logging: every Vertex AI call logs prompt, response, latency, and token counts as structured JSON log entries for audit and drift review.
@@ -207,7 +207,7 @@ Cloud Monitoring alerting policy: if the webhook Cloud Function's error rate exc
 
 ---
 
-## Task 7 — Responsible AI Guardrails (Bonus)
+## Task 7 - Responsible AI Guardrails (Bonus)
 
 **1. Grounding constraint (applied in the prompt, Task 2)**
 
