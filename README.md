@@ -63,7 +63,7 @@ built and partially tested in a GCP free-tier sandbox project.
 
 ## Task 1 - Dialogflow CX: Intent & Flow
 
-**Intent: `billing.inquiry.high_bill`** — training phrases
+**Intent: `billing.inquiry.high_bill`** - training phrases
 
 - Why is my bill so high this month?
 - My bill went up and I don't understand why.
