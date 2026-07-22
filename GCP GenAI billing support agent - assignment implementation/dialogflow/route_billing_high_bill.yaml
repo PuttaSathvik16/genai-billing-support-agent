@@ -1,0 +1,24 @@
+# Dialogflow CX route configuration for the billing.inquiry.high_bill intent.
+# Applied on the Billing_Inquiry_Page inside the billing-support-agent.
+# This is a reference definition — routes are normally configured via the
+# Conversational Agents console or the Dialogflow CX API, not a flat YAML file,
+# but this documents the exact settings used.
+
+route:
+  name: billing_high_bill_route
+  condition: "$intent.name = 'billing.inquiry.high_bill' AND $intent.confidence >= 0.7"
+  triggerFulfillment:
+    webhook: billing-genai-webhook
+    tag: high_bill_explanation
+    parameterPresets:
+      - customer_id: "$session.params.customer_id"
+      - account_id: "$session.params.account_id"
+  targetPage: Billing_Explanation_Page
+
+webhook:
+  displayName: billing-genai-webhook
+  genericWebService:
+    uri: "https://REGION-PROJECT_ID.cloudfunctions.net/high-bill-explanation"
+    httpMethod: POST
+    requestBody: "{{default}}"
+  timeout: 10s

@@ -1,0 +1,31 @@
+{
+  "displayName": "billing.inquiry.high_bill",
+  "trainingPhrases": [
+    {
+      "parts": [{ "text": "Why is my bill so high this month?" }],
+      "repeatCount": 1
+    },
+    {
+      "parts": [{ "text": "My bill went up and I don't understand why." }],
+      "repeatCount": 1
+    },
+    {
+      "parts": [{ "text": "I was charged more than usual, can you explain this?" }],
+      "repeatCount": 1
+    },
+    {
+      "parts": [{ "text": "This bill seems higher compared to last month, what changed?" }],
+      "repeatCount": 1
+    }
+  ],
+  "parameters": [
+    {
+      "id": "date-period",
+      "entityType": "@sys.date-period",
+      "isList": false,
+      "redact": false
+    }
+  ],
+  "priority": 500000,
+  "isFallback": false
+}

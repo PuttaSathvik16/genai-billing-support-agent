@@ -1,0 +1,42 @@
+# Task 6: Cloud Monitoring alert policy
+#
+# Fires if the high-bill-explanation webhook's error rate exceeds 5% over a
+# rolling 5-minute window. Notifies the on-call channel so a Vertex AI outage
+# or malformed billing_data doesn't silently degrade the customer experience.
+#
+# Create with:
+#   gcloud alpha monitoring policies create --policy-from-file=monitoring/alert_policy.yaml
+#
+# Note: replace notificationChannels with real channel IDs from
+#   gcloud beta monitoring channels list
+
+displayName: "High-Bill Webhook Error Rate > 5%"
+combiner: OR
+conditions:
+  - displayName: "Cloud Function error rate exceeds 5% (5m window)"
+    conditionThreshold:
+      filter: >
+        resource.type = "cloud_run_revision"
+        AND resource.labels.service_name = "high-bill-explanation"
+        AND metric.type = "run.googleapis.com/request_count"
+        AND metric.labels.response_code_class != "2xx"
+      comparison: COMPARISON_GT
+      thresholdValue: 0.05
+      duration: 300s
+      aggregations:
+        - alignmentPeriod: 300s
+          perSeriesAligner: ALIGN_RATE
+          crossSeriesReducer: REDUCE_MEAN
+notificationChannels:
+  - "projects/YOUR_PROJECT_ID/notificationChannels/YOUR_SLACK_CHANNEL_ID"
+  - "projects/YOUR_PROJECT_ID/notificationChannels/YOUR_PAGERDUTY_CHANNEL_ID"
+alertStrategy:
+  autoClose: 1800s
+documentation:
+  content: >
+    The high-bill-explanation webhook is returning errors on more than 5% of
+    requests over a 5-minute window. Check Cloud Logging for the function
+    first — likely causes are a Vertex AI quota/outage issue or malformed
+    billing_data in the session parameters. Escalate to on-call if the
+    Vertex AI status page shows no incident.
+  mimeType: text/markdown
