@@ -1,5 +1,5 @@
 # GenAI-Powered Billing Support Agent - GCP Reference Implementation
-# GCP Generative AI – Hands-on Coding Assignment
+# GCP Generative AI - Hands-on Coding Assignment
 
 **Sathvik Putta | Virtusa Corporation**
 
