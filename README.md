@@ -1,5 +1,5 @@
 # GenAI-Powered Billing Support Agent - GCP Reference Implementation
-# GCP Generative AI - Hands-on Coding Assignment
+# GCP Generative AI - Hands - on Coding Assignment
 
 **Sathvik Putta | Virtusa Corporation**
 
@@ -9,34 +9,34 @@ BigQuery, and Cloud Monitoring.
 
 This repo implements the components for the GCP GenAI hands-on assignment. Each task
 maps to a folder below. Code is written to be deployable (correct syntax, real SDK
-usage) but has not been deployed end-to-end in a production environment — it was
+usage) but has not been deployed end-to-end in a production environment - it was
 built and partially tested in a GCP free-tier sandbox project.
 
-**Business Scenario:** GenAI-powered virtual agent for telecom billing inquiries — response generation, promise extraction, post-call notification, analytics, and monitoring.
+**Business Scenario:** GenAI - powered virtual agent for telecom billing inquiries - response generation, promise extraction, post-call notification, analytics, and monitoring.
 
 
 ## Repo structure
 
 ```
 .
-├── dialogflow/                     # Task 1 — Intent definition
+├── dialogflow/                     # Task 1 - Intent definition
 │   └── intent_billing_inquiry_high_bill.json
 ├── functions/
-│   ├── high_bill_explanation/      # Task 2 — Vertex AI webhook fulfillment
+│   ├── high_bill_explanation/      # Task 2 - Vertex AI webhook fulfillment
 │   │   ├── main.py
 │   │   └── requirements.txt
-│   ├── promise_extraction/         # Task 3 — Post-call promise extraction
+│   ├── promise_extraction/         # Task 3 - Post-call promise extraction
 │   │   ├── main.py
 │   │   └── requirements.txt
-│   └── notify_after_call/          # Task 4 — Pub/Sub-triggered email notification
+│   └── notify_after_call/          # Task 4 - Pub/Sub-triggered email notification
 │       ├── main.py
 │       └── requirements.txt
 ├── sql/
-│   └── promise_analytics.sql       # Task 5 — BigQuery analytics query
+│   └── promise_analytics.sql       # Task 5 - BigQuery analytics query
 ├── monitoring/
-│   └── alert_policy.yaml           # Task 6 — Cloud Monitoring alert policy
+│   └── alert_policy.yaml           # Task 6 - Cloud Monitoring alert policy
 ├── guardrails/
-│   └── pii_redaction.py            # Task 7 — Responsible AI: PII redaction guardrail
+│   └── pii_redaction.py            # Task 7 - Responsible AI: PII redaction guardrail
 └── docs/
     └── architecture.md             # End-to-end flow + design notes
 ```
